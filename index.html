@@ -256,6 +256,20 @@
         .hero-ico { font-size: 20px; margin-bottom: 9px; }
         .hero-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
         .hero-sub { font-size: 12px; color: var(--text-soft); }
+        .shots-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 14px 0 4px; }
+        .shot-card { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--card); overflow: hidden; }
+        .shot-card img { width: 100%; display: block; }
+        .shot-meta { padding: 10px 12px; color: var(--text-soft); font-size: 12px; }
+        .hotkeys-list { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 8px; }
+        .hotkey-item {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: rgba(12, 22, 40, 0.62);
+            padding: 10px 12px;
+            color: #dbe8ff;
+            font-size: 14px;
+        }
+        .hotkey-item b { color: var(--accent); }
 
         .alert {
             border: 1px solid var(--line);
@@ -468,11 +482,26 @@
                     <div class="step" data-ru="После успешной инициализации сразу запускайте игру." data-en="Launch the game immediately after successful initialization." data-zh="初始化成功后立即启动游戏。">После успешной инициализации сразу запускайте игру.</div>
                     <div class="step" data-ru="Откройте меню горячей клавишей (обычно Home/Del)." data-en="Open menu with hotkey (usually Home/Del)." data-zh="使用热键打开菜单（通常 Home/Del）。">Откройте меню горячей клавишей (обычно Home/Del).</div>
                 </div>
+                <h2 data-ru="Скриншоты из инструкции" data-en="Screenshots from instruction" data-zh="说明截图">Скриншоты из инструкции</h2>
+                <div class="shots-grid">
+                    <div class="shot-card">
+                        <img src="legit-hotkeys.png" alt="Legit hotkeys screenshot">
+                        <div class="shot-meta" data-ru="Пример из оригинальной инструкции: блок с кнопками Legit." data-en="Example from original instruction: Legit hotkeys block." data-zh="原始说明示例：Legit 热键模块。">Пример из оригинальной инструкции: блок с кнопками Legit.</div>
+                    </div>
+                </div>
             </section>
 
             <section id="page-lite" class="section">
                 <h1 data-ru="Инструкция для <span class='a'>ABI LITE / LEGIT</span>" data-en="<span class='a'>ABI LITE / LEGIT</span> Guide" data-zh="<span class='a'>ABI LITE / LEGIT</span> 指南">Инструкция для <span class='a'>ABI LITE / LEGIT</span></h1>
                 <p class="subtitle" data-ru="Отдельные рекомендации для максимально легитной игры." data-en="Special recommendations for a clean legit playstyle." data-zh="面向 Lite/Legit 风格的专项建议。">Отдельные рекомендации для максимально легитной игры.</p>
+                <div class="alert" data-ru="У данного Legit-продукта меню может отсутствовать. Основные функции включаются горячими клавишами." data-en="This Legit product may have no menu. Main functions are activated by hotkeys." data-zh="该 Legit 产品可能没有菜单，主要功能通过快捷键启用。">У данного Legit-продукта меню может отсутствовать. Основные функции включаются горячими клавишами.</div>
+                <ul class="hotkeys-list">
+                    <li class="hotkey-item" data-ru="<b>F1</b> - Thermal Vision" data-en="<b>F1</b> - Thermal Vision" data-zh="<b>F1</b> - 热成像">F1 - Thermal Vision</li>
+                    <li class="hotkey-item" data-ru="<b>F2</b> - Recoil Control (+/-)" data-en="<b>F2</b> - Recoil Control (+/-)" data-zh="<b>F2</b> - 后坐力控制 (+/-)">F2 - Recoil Control (+/-)</li>
+                    <li class="hotkey-item" data-ru="<b>F3</b> - Fast Search" data-en="<b>F3</b> - Fast Search" data-zh="<b>F3</b> - 快速搜索">F3 - Fast Search</li>
+                    <li class="hotkey-item" data-ru="<b>F4</b> - Fast Magazine" data-en="<b>F4</b> - Fast Magazine" data-zh="<b>F4</b> - 快速装弹">F4 - Fast Magazine</li>
+                    <li class="hotkey-item" data-ru="<b>F5</b> - No Visor" data-en="<b>F5</b> - No Visor" data-zh="<b>F5</b> - 无面罩">F5 - No Visor</li>
+                </ul>
                 <div class="steps">
                     <div class="step" data-ru="Используйте умеренные значения и избегайте экстремальных пресетов." data-en="Use moderate values and avoid extreme presets." data-zh="使用中等参数，避免极端预设。">Используйте умеренные значения и избегайте экстремальных пресетов.</div>
                     <div class="step" data-ru="После обновления игры скачивайте только свежий билд." data-en="After game updates, use only a fresh build." data-zh="游戏更新后仅使用最新构建。">После обновления игры скачивайте только свежий билд.</div>

@@ -1,7 +1,24 @@
 <svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="128" height="128" rx="24" fill="#0A0D13"/>
-  <path d="M64 20C43.0132 20 26 37.0132 26 58V98L38 88L50 98L64 88L78 98L90 88L102 98V58C102 37.0132 84.9868 20 64 20Z" fill="#E6EDF3"/>
-  <circle cx="52" cy="56" r="6" fill="#52F29A"/>
-  <circle cx="76" cy="56" r="6" fill="#52F29A"/>
-  <path d="M50 74C55 79 73 79 78 74" stroke="#0A0D13" stroke-width="4" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="ghostMain" x1="64" y1="18" x2="64" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4FCFF"/>
+      <stop offset="1" stop-color="#90CFFF"/>
+    </linearGradient>
+    <linearGradient id="ghostShade" x1="64" y1="34" x2="64" y2="112" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C8EBFF"/>
+      <stop offset="1" stop-color="#5AA7E8"/>
+    </linearGradient>
+    <linearGradient id="eyeGlow" x1="64" y1="52" x2="64" y2="68" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A1528"/>
+      <stop offset="1" stop-color="#0F2640"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="24" fill="#081224"/>
+  <path d="M64 18C41.2 18 23 36.4 23 59.2V95.5L34.8 86.8L46.4 98L58.8 88.8L71.2 98L83.6 88.8L95.2 98L105 86.8V59.2C105 36.4 86.8 18 64 18Z" fill="url(#ghostMain)"/>
+  <path d="M64 26C46.4 26 32.8 39.8 32.8 56.8V86L43 78.4L53.2 88L64 80L74.8 88L85 78.4L95.2 88V56.8C95.2 39.8 81.6 26 64 26Z" fill="url(#ghostShade)" opacity=".95"/>
+  <path d="M64 36C54.4 36 46.8 43.4 46.8 53.2C46.8 63 54.4 70.4 64 70.4C73.6 70.4 81.2 63 81.2 53.2C81.2 43.4 73.6 36 64 36Z" fill="#EAF8FF"/>
+  <path d="M54 50C50.8 50 48.2 52.6 48.2 55.8C48.2 59 50.8 61.6 54 61.6C57.2 61.6 59.8 59 59.8 55.8C59.8 52.6 57.2 50 54 50Z" fill="url(#eyeGlow)"/>
+  <path d="M74 50C70.8 50 68.2 52.6 68.2 55.8C68.2 59 70.8 61.6 74 61.6C77.2 61.6 79.8 59 79.8 55.8C79.8 52.6 77.2 50 74 50Z" fill="url(#eyeGlow)"/>
+  <path d="M53 71C56.8 75.2 71.2 75.2 75 71" stroke="#0F2E4D" stroke-width="4" stroke-linecap="round"/>
+  <path d="M36 84L47 76.2L58.8 86L64 82.2L69.2 86L81 76.2L92 84" stroke="#D9F2FF" stroke-opacity=".72" stroke-width="2.4" stroke-linecap="round"/>
 </svg>

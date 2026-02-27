@@ -270,7 +270,12 @@
             font-size: 14px;
         }
         .hotkey-item b { color: var(--accent); }
-        .abi-accordion { margin: 10px 0 0; }
+        .abi-accordion {
+            margin: 10px 0 0;
+            border-radius: var(--r-md);
+            overflow: clip;
+            transition: transform .2s ease;
+        }
         .abi-accordion summary {
             list-style: none;
             cursor: pointer;
@@ -281,16 +286,64 @@
             color: #e7f1ff;
             font-weight: 800;
             letter-spacing: .3px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color .25s ease, box-shadow .25s ease, transform .2s ease;
         }
         .abi-accordion summary::-webkit-details-marker { display: none; }
+        .abi-accordion summary::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, transparent 20%, rgba(121, 215, 255, 0.14) 45%, transparent 70%);
+            transform: translateX(-120%);
+            transition: transform .55s ease;
+            pointer-events: none;
+        }
+        .abi-accordion summary:hover {
+            border-color: rgba(121, 215, 255, .45);
+            box-shadow: 0 8px 24px rgba(5, 16, 34, 0.35), inset 0 0 0 1px rgba(121, 215, 255, 0.08);
+        }
+        .abi-accordion summary:hover::before { transform: translateX(120%); }
         .abi-accordion summary::after {
             content: "⌄";
             float: right;
             color: #8ea4c8;
-            transition: transform .2s;
+            transition: transform .25s ease, color .25s ease;
         }
-        .abi-accordion[open] summary::after { transform: rotate(180deg); }
+        .abi-accordion[open] summary {
+            border-color: rgba(121, 215, 255, .5);
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            box-shadow: 0 0 0 1px rgba(121, 215, 255, 0.08), 0 10px 26px rgba(4, 10, 24, 0.4);
+        }
+        .abi-accordion[open] summary::after {
+            transform: rotate(180deg);
+            color: var(--accent);
+        }
         .abi-accordion .hotkeys-list { margin: 10px 0 16px; }
+        .abi-accordion[open] .hotkeys-list { animation: fadeSlideDown .28s ease both; }
+        .abi-accordion[open] .hotkey-item {
+            animation: itemFade .22s ease both;
+            animation-delay: calc(var(--i, 0) * 20ms);
+        }
+        .abi-accordion .hotkey-item:nth-child(1) { --i: 1; }
+        .abi-accordion .hotkey-item:nth-child(2) { --i: 2; }
+        .abi-accordion .hotkey-item:nth-child(3) { --i: 3; }
+        .abi-accordion .hotkey-item:nth-child(4) { --i: 4; }
+        .abi-accordion .hotkey-item:nth-child(5) { --i: 5; }
+        .abi-accordion .hotkey-item:nth-child(6) { --i: 6; }
+        .abi-accordion .hotkey-item:nth-child(7) { --i: 7; }
+        .abi-accordion .hotkey-item:nth-child(8) { --i: 8; }
+        .abi-accordion .hotkey-item:nth-child(n+9) { --i: 9; }
+        @keyframes fadeSlideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes itemFade {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         .alert {
             border: 1px solid var(--line);

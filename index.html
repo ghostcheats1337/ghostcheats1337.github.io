@@ -7,113 +7,372 @@
     <link rel="icon" href="logo.svg" type="image/svg+xml">
     <meta property="og:type" content="website">
     <meta property="og:title" content="GHOST CHEATS - Documentation">
-    <meta property="og:description" content="Installation guide, launch flow, and troubleshooting for GHOST products.">
+    <meta property="og:description" content="Cold-styled multilingual documentation for GHOST products.">
     <meta name="twitter:card" content="summary">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #07080c;
-            --bg-soft: #0f1218;
-            --bg-card: #11151c;
-            --text: #e6edf3;
-            --muted: #8b98ab;
-            --border: #1f2633;
-            --accent: #52f29a;
-            --accent-soft: rgba(82, 242, 154, 0.12);
-            --danger: #ff5c5c;
-            --warn: #ffcc66;
-            --radius: 12px;
+            --bg: #060b15;
+            --bg-2: #0b1220;
+            --bg-sidebar: #070d18;
+            --card: rgba(19, 31, 56, 0.62);
+            --card-solid: #101b31;
+            --text: #e9f1ff;
+            --text-soft: #9fb0cc;
+            --line: rgba(120, 152, 208, 0.22);
+            --accent: #79d7ff;
+            --accent-2: #89b3ff;
+            --good: #66f5be;
+            --warn: #ffd56d;
+            --bad: #ff8e97;
+            --r-sm: 10px;
+            --r-md: 14px;
+            --r-lg: 18px;
+            --blur: blur(12px);
         }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: Inter, sans-serif; background: var(--bg); color: var(--text); }
+
+        body {
+            font-family: Inter, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 12% 14%, rgba(121, 215, 255, 0.15), transparent 28%),
+                radial-gradient(circle at 88% 6%, rgba(137, 179, 255, 0.12), transparent 24%),
+                linear-gradient(165deg, #050914 0%, #070d19 45%, #04070f 100%);
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(120deg, transparent 25%, rgba(160, 200, 255, 0.05) 35%, transparent 45%),
+                linear-gradient(120deg, transparent 55%, rgba(130, 190, 255, 0.04) 62%, transparent 72%);
+            animation: drift 16s linear infinite;
+            opacity: .45;
+        }
+
+        @keyframes drift {
+            0% { transform: translateX(-4%); }
+            50% { transform: translateX(4%); }
+            100% { transform: translateX(-4%); }
+        }
+
         .layout { display: flex; min-height: 100vh; }
+
         .sidebar {
-            width: 280px; position: fixed; inset: 0 auto 0 0; overflow-y: auto;
-            background: #0a0d13; border-right: 1px solid var(--border);
+            width: 292px;
+            position: fixed;
+            inset: 0 auto 0 0;
+            overflow-y: auto;
+            z-index: 20;
+            border-right: 1px solid var(--line);
+            background: linear-gradient(180deg, rgba(7, 13, 24, 0.95), rgba(6, 10, 20, 0.92));
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
         }
-        .brand { padding: 20px; border-bottom: 1px solid var(--border); }
-        .logo { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 800; letter-spacing: 1px; }
-        .logo img { width: 28px; height: 28px; border-radius: 8px; }
+
+        .brand {
+            padding: 20px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 900;
+            font-size: 21px;
+            letter-spacing: .8px;
+        }
+
+        .logo img {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(121, 215, 255, .25);
+        }
+
         .logo span { color: var(--accent); }
-        .sub { color: var(--muted); font-size: 12px; margin-top: 3px; }
+        .sub { margin-top: 4px; color: var(--text-soft); font-size: 11px; }
+
         .lang {
-            display: grid; grid-template-columns: repeat(3,1fr); margin: 14px; gap: 6px;
+            margin: 14px;
+            padding: 4px;
+            border: 1px solid var(--line);
+            border-radius: var(--r-sm);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            background: rgba(10, 17, 32, 0.62);
         }
+
         .lang button {
-            background: var(--bg-soft); color: var(--muted); border: 1px solid var(--border);
-            border-radius: 8px; padding: 8px 6px; cursor: pointer; font-weight: 700;
+            border: 0;
+            padding: 8px 6px;
+            border-radius: 7px;
+            color: var(--text-soft);
+            background: transparent;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 700;
+            transition: .2s;
         }
-        .lang button.active { background: var(--accent-soft); border-color: #2f8f65; color: var(--accent); }
+
+        .lang button.active {
+            color: #03111f;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            box-shadow: 0 4px 12px rgba(121, 215, 255, 0.3);
+        }
+
         .status {
-            margin: 8px 14px 14px; padding: 10px 12px; border-radius: 8px;
-            background: var(--accent-soft); border: 1px solid #2f8f65; color: var(--accent); font-size: 12px;
+            margin: 8px 14px 14px;
+            padding: 10px 12px;
+            border-radius: var(--r-sm);
+            border: 1px solid rgba(102, 245, 190, 0.25);
+            color: var(--good);
+            font-size: 12px;
+            font-weight: 600;
+            background: rgba(102, 245, 190, 0.08);
         }
-        .nav-title { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .8px; padding: 10px 14px 4px; }
+
+        .nav-title {
+            color: #7185a9;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            padding: 10px 14px 4px;
+            font-weight: 700;
+        }
+
         .nav-link {
-            display: block; margin: 4px 10px; padding: 10px 12px; border-radius: 8px; text-decoration: none;
-            color: #c6d3e1; font-size: 13px; cursor: pointer;
+            margin: 3px 10px;
+            padding: 9px 11px;
+            border: 1px solid transparent;
+            border-radius: var(--r-sm);
+            text-decoration: none;
+            color: #d8e6ff;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            transition: .2s;
         }
-        .nav-link:hover { background: #111723; }
-        .nav-link.active { background: var(--accent-soft); color: var(--accent); }
-        .main { margin-left: 280px; flex: 1; }
+
+        .nav-link:hover {
+            border-color: var(--line);
+            background: rgba(23, 40, 70, .45);
+            transform: translateX(1px);
+        }
+
+        .nav-link.active {
+            color: var(--accent);
+            border-color: rgba(121, 215, 255, .35);
+            background: linear-gradient(90deg, rgba(121, 215, 255, .14), rgba(121, 215, 255, .05));
+            box-shadow: inset 0 0 0 1px rgba(121, 215, 255, .08);
+        }
+
+        .main { margin-left: 292px; flex: 1; min-width: 0; }
+
         .top {
-            position: sticky; top: 0; z-index: 5; backdrop-filter: blur(8px);
-            display: flex; justify-content: space-between; gap: 10px;
-            padding: 12px 24px; border-bottom: 1px solid var(--border); background: rgba(7,8,12,.75);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 28px;
+            border-bottom: 1px solid var(--line);
+            background: rgba(7, 12, 23, 0.74);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
         }
-        .crumb { color: var(--muted); font-size: 13px; }
+
+        .crumb { color: var(--text-soft); font-size: 13px; }
+
         .search {
-            width: 290px; background: var(--bg-soft); border: 1px solid var(--border);
-            color: var(--text); border-radius: 8px; padding: 8px 10px;
+            width: 290px;
+            border-radius: 11px;
+            border: 1px solid var(--line);
+            background: rgba(12, 22, 40, 0.66);
+            color: var(--text);
+            padding: 9px 12px;
+            outline: none;
+            transition: .2s;
         }
-        .content { max-width: 900px; margin: 0 auto; padding: 32px 24px 60px; }
+
+        .search:focus {
+            border-color: rgba(121, 215, 255, .45);
+            box-shadow: 0 0 0 3px rgba(121, 215, 255, .13);
+        }
+
+        .content { max-width: 930px; margin: 0 auto; padding: 34px 24px 70px; }
         .section { display: none; }
         .section.active { display: block; }
-        h1 { font-size: 30px; margin-bottom: 8px; }
-        h1 .a { color: var(--accent); }
-        .subtitle { color: var(--muted); margin-bottom: 20px; }
-        h2 { margin: 26px 0 12px; font-size: 20px; }
+
+        h1 {
+            font-size: 32px;
+            letter-spacing: -0.4px;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+
+        h1 .a {
+            color: var(--accent);
+            text-shadow: 0 0 18px rgba(121, 215, 255, .35);
+        }
+
+        h2 { margin: 30px 0 14px; font-size: 21px; font-weight: 700; }
+        .subtitle { color: var(--text-soft); margin-bottom: 18px; font-size: 14px; }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 16px 0 8px;
+        }
+
+        .hero-card {
+            border: 1px solid var(--line);
+            background: linear-gradient(170deg, rgba(24, 41, 72, 0.65), rgba(16, 27, 49, 0.65));
+            border-radius: var(--r-md);
+            padding: 16px 14px;
+            transition: .2s;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(121, 215, 255, .42);
+            box-shadow: 0 10px 30px rgba(4, 10, 24, 0.35), 0 0 16px rgba(121, 215, 255, 0.15);
+        }
+
+        .hero-ico { font-size: 20px; margin-bottom: 9px; }
+        .hero-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+        .hero-sub { font-size: 12px; color: var(--text-soft); }
+
         .alert {
-            border: 1px solid var(--border); background: var(--bg-card); padding: 14px 16px;
-            border-radius: var(--radius); margin: 12px 0; color: #ced9e8; font-size: 14px;
+            border: 1px solid var(--line);
+            background: var(--card);
+            border-radius: var(--r-md);
+            padding: 14px 16px;
+            margin: 12px 0;
+            font-size: 14px;
+            color: #dbe8ff;
         }
-        .alert.warn { border-color: #6f5a2c; color: var(--warn); }
-        .alert.danger { border-color: #6d2f34; color: var(--danger); }
-        .alert.ok { border-color: #2f8f65; color: var(--accent); background: var(--accent-soft); }
-        .steps { display: grid; gap: 10px; margin: 10px 0 20px; }
+
+        .alert.ok { border-color: rgba(102, 245, 190, .35); color: var(--good); background: rgba(102, 245, 190, .08); }
+        .alert.warn { border-color: rgba(255, 213, 109, .35); color: var(--warn); background: rgba(255, 213, 109, .08); }
+        .alert.danger { border-color: rgba(255, 142, 151, .35); color: var(--bad); background: rgba(255, 142, 151, .08); }
+
+        .steps { counter-reset: st; display: grid; gap: 10px; margin: 10px 0 20px; }
         .step {
-            border: 1px solid var(--border); background: var(--bg-card); border-radius: var(--radius);
-            padding: 13px 14px; font-size: 14px; color: #d5dfeb;
+            counter-increment: st;
+            position: relative;
+            border: 1px solid var(--line);
+            background: var(--card);
+            border-radius: var(--r-md);
+            padding: 13px 14px 13px 52px;
+            font-size: 14px;
+            color: #d9e6fc;
+            line-height: 1.55;
         }
+
+        .step::before {
+            content: counter(st);
+            position: absolute;
+            left: 13px;
+            top: 11px;
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #061021;
+            font-size: 12px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        }
+
         .error {
-            border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden;
-            background: var(--bg-card);
+            margin-bottom: 9px;
+            border-radius: var(--r-md);
+            border: 1px solid var(--line);
+            background: var(--card);
+            overflow: hidden;
+            transition: .2s;
         }
+
+        .error:hover { border-color: rgba(121, 215, 255, .35); }
+
         .error-head {
-            display: flex; align-items: center; gap: 10px; padding: 12px; cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 12px 13px;
         }
+
         .num {
-            min-width: 38px; text-align: center; font-size: 11px; font-weight: 800;
-            background: var(--accent-soft); color: var(--accent); border: 1px solid #2f8f65; border-radius: 6px; padding: 4px 6px;
+            min-width: 38px;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 800;
+            border-radius: 7px;
+            padding: 4px 6px;
+            color: #05111f;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
         }
-        .error-title { font-size: 14px; flex: 1; }
-        .arrow { color: var(--muted); transition: transform .2s; }
-        .error-body { display: none; border-top: 1px solid var(--border); padding: 12px 14px 14px; color: #b8c5d7; font-size: 14px; }
+
+        .error-title { flex: 1; font-size: 14px; color: #e6f0ff; }
+        .arrow { color: #8ea4c8; transition: transform .2s; }
+
+        .error-body {
+            display: none;
+            border-top: 1px solid var(--line);
+            padding: 12px 14px 14px;
+            color: #c7d8f3;
+            font-size: 14px;
+        }
+
         .error.open .error-body { display: block; }
         .error.open .arrow { transform: rotate(90deg); }
+
         ul { padding-left: 18px; }
-        li { margin: 6px 0; }
+        li { margin: 6px 0; line-height: 1.5; }
+
         .mobile-btn { display: none; }
+
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; }
+        }
+
         @media (max-width: 820px) {
-            .sidebar { transform: translateX(-100%); transition: transform .25s; z-index: 20; }
+            .sidebar { transform: translateX(-100%); transition: transform .25s; }
             .sidebar.open { transform: translateX(0); }
             .main { margin-left: 0; }
             .search { width: 160px; }
+            .top { padding: 12px 14px; }
+            .content { padding: 22px 14px 64px; }
+            h1 { font-size: 24px; }
             .mobile-btn {
-                display: block; position: fixed; right: 16px; bottom: 16px; z-index: 30;
-                border: 0; background: var(--accent); color: #03120a; font-weight: 800; padding: 11px 14px; border-radius: 10px;
+                display: block;
+                position: fixed;
+                right: 16px;
+                bottom: 16px;
+                z-index: 30;
+                border: 1px solid rgba(121, 215, 255, .45);
+                background: linear-gradient(135deg, var(--accent), var(--accent-2));
+                color: #031120;
+                font-weight: 900;
+                padding: 11px 14px;
+                border-radius: 12px;
             }
         }
     </style>
@@ -125,21 +384,26 @@
             <div class="logo"><img src="logo.svg" alt="GHOST logo">GHOST <span>CHEATS</span></div>
             <div class="sub" data-ru="FAQ и Инструкция" data-en="FAQ & Instructions" data-zh="常见问题与使用指南">FAQ и Инструкция</div>
         </div>
+
         <div class="lang">
             <button class="lang-btn active" onclick="setLang('ru')">RU</button>
             <button class="lang-btn" onclick="setLang('en')">EN</button>
             <button class="lang-btn" onclick="setLang('zh')">中文</button>
         </div>
+
         <div class="status" data-ru="● Все системы работают" data-en="● All systems operational" data-zh="● 所有系统运行正常">● Все системы работают</div>
+
         <div class="nav-title" data-ru="Начало работы" data-en="Getting Started" data-zh="快速开始">Начало работы</div>
-        <a class="nav-link active" data-page="intro" onclick="showPage('intro')"><span data-ru="Введение" data-en="Introduction" data-zh="介绍">Введение</span></a>
-        <a class="nav-link" data-page="prep" onclick="showPage('prep')"><span data-ru="Подготовка ПК" data-en="PC Preparation" data-zh="电脑准备">Подготовка ПК</span></a>
-        <a class="nav-link" data-page="launch" onclick="showPage('launch')"><span data-ru="Запуск продукта" data-en="Launch Guide" data-zh="启动指南">Запуск продукта</span></a>
-        <a class="nav-link" data-page="lite" onclick="showPage('lite')"><span data-ru="ABI LITE / LEGIT" data-en="ABI LITE / LEGIT" data-zh="ABI LITE / LEGIT">ABI LITE / LEGIT</span></a>
+        <a class="nav-link active" data-page="intro" onclick="showPage('intro')"><span>👻</span><span data-ru="Введение" data-en="Introduction" data-zh="介绍">Введение</span></a>
+        <a class="nav-link" data-page="prep" onclick="showPage('prep')"><span>🧊</span><span data-ru="Подготовка ПК" data-en="PC Preparation" data-zh="电脑准备">Подготовка ПК</span></a>
+        <a class="nav-link" data-page="launch" onclick="showPage('launch')"><span>🚀</span><span data-ru="Запуск продукта" data-en="Launch Guide" data-zh="启动指南">Запуск продукта</span></a>
+        <a class="nav-link" data-page="lite" onclick="showPage('lite')"><span>🎯</span><span data-ru="ABI LITE / LEGIT" data-en="ABI LITE / LEGIT" data-zh="ABI LITE / LEGIT">ABI LITE / LEGIT</span></a>
+
         <div class="nav-title" data-ru="Ошибки" data-en="Troubleshooting" data-zh="故障排查">Ошибки</div>
-        <a class="nav-link" data-page="errors" onclick="showPage('errors')"><span data-ru="Частые ошибки" data-en="Common Errors" data-zh="常见错误">Частые ошибки</span></a>
+        <a class="nav-link" data-page="errors" onclick="showPage('errors')"><span>🛠️</span><span data-ru="Частые ошибки" data-en="Common Errors" data-zh="常见错误">Частые ошибки</span></a>
+
         <div class="nav-title" data-ru="Помощь" data-en="Help" data-zh="帮助">Помощь</div>
-        <a class="nav-link" data-page="support" onclick="showPage('support')"><span data-ru="Поддержка 24/7" data-en="Support 24/7" data-zh="24/7 支持">Поддержка 24/7</span></a>
+        <a class="nav-link" data-page="support" onclick="showPage('support')"><span>💬</span><span data-ru="Поддержка 24/7" data-en="Support 24/7" data-zh="24/7 支持">Поддержка 24/7</span></a>
     </aside>
 
     <main class="main">
@@ -150,60 +414,81 @@
 
         <div class="content">
             <section id="page-intro" class="section active">
-                <h1 data-ru="Документация <span class='a'>GHOST</span>" data-en="<span class='a'>GHOST</span> Documentation" data-zh="<span class='a'>GHOST</span> 文档"></h1>
-                <p class="subtitle" data-ru="Подробная инструкция по установке, запуску и решению ошибок для всех продуктов GHOST." data-en="Detailed guide for installation, launch, and troubleshooting across GHOST products." data-zh="适用于 GHOST 全部产品的安装、启动与错误处理详细说明。"></p>
-                <div class="alert ok" data-ru="Начните с раздела «Подготовка ПК», затем перейдите к «Запуск продукта»." data-en="Start from 'PC Preparation', then move to 'Launch Guide'." data-zh="请先完成“电脑准备”，然后继续“启动指南”。"></div>
-                <h2 data-ru="Быстрый старт" data-en="Quick Start" data-zh="快速开始"></h2>
+                <h1 data-ru="Документация <span class='a'>GHOST</span>" data-en="<span class='a'>GHOST</span> Documentation" data-zh="<span class='a'>GHOST</span> 文档">Документация <span class='a'>GHOST</span></h1>
+                <p class="subtitle" data-ru="Холодный и понятный гайд по запуску, конфигурации и устранению ошибок." data-en="Cold-styled and clear guide for launch, setup and troubleshooting." data-zh="冷色风格、结构清晰的启动与故障排查文档。">Холодный и понятный гайд по запуску, конфигурации и устранению ошибок.</p>
+
+                <div class="alert ok" data-ru="Сначала сделайте «Подготовка ПК», затем переходите к запуску." data-en="Complete 'PC Preparation' first, then proceed to launch." data-zh="请先完成“电脑准备”，再进行启动。">Сначала сделайте «Подготовка ПК», затем переходите к запуску.</div>
+
+                <div class="hero-grid">
+                    <div class="hero-card">
+                        <div class="hero-ico">🧊</div>
+                        <div class="hero-title" data-ru="Подготовка ПК" data-en="PC Preparation" data-zh="电脑准备">Подготовка ПК</div>
+                        <div class="hero-sub" data-ru="Отключение конфликтующих служб" data-en="Disable conflicting services" data-zh="关闭冲突服务">Отключение конфликтующих служб</div>
+                    </div>
+                    <div class="hero-card">
+                        <div class="hero-ico">🚀</div>
+                        <div class="hero-title" data-ru="Запуск" data-en="Launch" data-zh="启动">Запуск</div>
+                        <div class="hero-sub" data-ru="Чёткая пошаговая последовательность" data-en="Clear step-by-step flow" data-zh="清晰的分步流程">Чёткая пошаговая последовательность</div>
+                    </div>
+                    <div class="hero-card">
+                        <div class="hero-ico">🛠️</div>
+                        <div class="hero-title" data-ru="Ошибки" data-en="Errors" data-zh="错误">Ошибки</div>
+                        <div class="hero-sub" data-ru="Быстрые фиксы по кодам и симптомам" data-en="Fast fixes by code and symptom" data-zh="按错误码快速修复">Быстрые фиксы по кодам и симптомам</div>
+                    </div>
+                </div>
+
+                <h2 data-ru="Быстрый старт" data-en="Quick Start" data-zh="快速开始">Быстрый старт</h2>
                 <div class="steps">
-                    <div class="step" data-ru="1) Отключите защитные службы и сторонние антивирусы." data-en="1) Disable security services and third-party antivirus tools." data-zh="1）关闭系统防护服务和第三方杀毒软件。"></div>
-                    <div class="step" data-ru="2) Скачайте и запустите актуальный лоадер от имени администратора." data-en="2) Download and run the latest loader as Administrator." data-zh="2）下载最新加载器并以管理员身份运行。"></div>
-                    <div class="step" data-ru="3) При ошибке откройте раздел «Частые ошибки» ниже." data-en="3) If any issue appears, open 'Common Errors' section." data-zh="3）若出现问题，请打开下方“常见错误”页面。"></div>
+                    <div class="step" data-ru="Отключите защитные службы и сторонние антивирусы." data-en="Disable protection services and third-party antivirus tools." data-zh="关闭系统防护服务和第三方杀毒软件。">Отключите защитные службы и сторонние антивирусы.</div>
+                    <div class="step" data-ru="Скачайте и запустите актуальный лоадер от имени администратора." data-en="Download and run the latest loader as Administrator." data-zh="下载并以管理员身份运行最新加载器。">Скачайте и запустите актуальный лоадер от имени администратора.</div>
+                    <div class="step" data-ru="При ошибке откройте раздел «Частые ошибки»." data-en="If an error appears, open the 'Common Errors' section." data-zh="若出现错误，请打开“常见错误”部分。">При ошибке откройте раздел «Частые ошибки».</div>
                 </div>
             </section>
 
             <section id="page-prep" class="section">
-                <h1 data-ru="Подготовка <span class='a'>ПК</span>" data-en="<span class='a'>PC</span> Preparation" data-zh="<span class='a'>电脑</span>准备"></h1>
-                <p class="subtitle" data-ru="Обязательные действия перед первым запуском." data-en="Required steps before the first launch." data-zh="首次启动前必须完成以下步骤。"></p>
-                <div class="alert danger" data-ru="Выполните каждый пункт. Пропуск шагов — самая частая причина ошибок." data-en="Complete every step. Skipping steps is the #1 reason for errors." data-zh="请完成每一步。跳过步骤是报错的主要原因。"></div>
+                <h1 data-ru="Подготовка <span class='a'>ПК</span>" data-en="<span class='a'>PC</span> Preparation" data-zh="<span class='a'>电脑</span>准备">Подготовка <span class='a'>ПК</span></h1>
+                <p class="subtitle" data-ru="Обязательные действия перед первым запуском продукта." data-en="Required actions before the first product launch." data-zh="首次启动前必须执行的步骤。">Обязательные действия перед первым запуском продукта.</p>
+                <div class="alert danger" data-ru="Пропуск шагов = повышенный шанс ошибок." data-en="Skipping steps = higher error chance." data-zh="跳过步骤会显著增加报错概率。">Пропуск шагов = повышенный шанс ошибок.</div>
                 <div class="steps">
-                    <div class="step" data-ru="Отключите Защитник Windows и контроль в реальном времени." data-en="Disable Windows Defender and real-time protection." data-zh="关闭 Windows Defender 和实时防护。"></div>
-                    <div class="step" data-ru="Удалите сторонние антивирусы и античиты (Faceit, Vanguard и т.д.)." data-en="Remove third-party antivirus and anti-cheat software (Faceit, Vanguard, etc.)." data-zh="卸载第三方杀毒与反作弊软件（Faceit、Vanguard 等）。"></div>
-                    <div class="step" data-ru="Очистите папки Temp и перезагрузите ПК." data-en="Clear Temp folders and restart your PC." data-zh="清理 Temp 临时文件夹并重启电脑。"></div>
-                    <div class="step" data-ru="Проверьте синхронизацию даты и времени в Windows." data-en="Verify Windows date/time synchronization." data-zh="检查 Windows 日期与时间同步。"></div>
+                    <div class="step" data-ru="Отключите Защитник Windows и контроль в реальном времени." data-en="Disable Windows Defender and real-time protection." data-zh="关闭 Windows Defender 和实时防护。">Отключите Защитник Windows и контроль в реальном времени.</div>
+                    <div class="step" data-ru="Удалите сторонние антивирусы и античиты (Faceit, Vanguard и т.д.)." data-en="Remove third-party antivirus and anti-cheat software (Faceit, Vanguard, etc.)." data-zh="卸载第三方杀毒与反作弊软件（Faceit、Vanguard 等）。">Удалите сторонние антивирусы и античиты (Faceit, Vanguard и т.д.).</div>
+                    <div class="step" data-ru="Очистите папки Temp и перезагрузите ПК." data-en="Clear Temp folders and restart your PC." data-zh="清理 Temp 临时文件并重启电脑。">Очистите папки Temp и перезагрузите ПК.</div>
+                    <div class="step" data-ru="Проверьте синхронизацию даты и времени Windows." data-en="Verify Windows date and time synchronization." data-zh="检查 Windows 日期与时间同步。">Проверьте синхронизацию даты и времени Windows.</div>
                 </div>
             </section>
 
             <section id="page-launch" class="section">
-                <h1 data-ru="Запуск <span class='a'>продукта</span>" data-en="<span class='a'>Product</span> Launch" data-zh="<span class='a'>产品</span>启动"></h1>
+                <h1 data-ru="Запуск <span class='a'>продукта</span>" data-en="<span class='a'>Product</span> Launch" data-zh="<span class='a'>产品</span>启动">Запуск <span class='a'>продукта</span></h1>
+                <div class="alert warn" data-ru="Рекомендуется запускать лоадер и игру на чистой системе после перезагрузки." data-en="Recommended: run loader and game on a clean system after reboot." data-zh="建议重启后在干净环境下启动加载器与游戏。">Рекомендуется запускать лоадер и игру на чистой системе после перезагрузки.</div>
                 <div class="steps">
-                    <div class="step" data-ru="1) Скачайте актуальный лоадер через ваш ключ/кабинет." data-en="1) Download the latest loader from your key/account panel." data-zh="1）通过密钥/个人面板下载最新加载器。"></div>
-                    <div class="step" data-ru="2) Запустите лоадер от имени администратора." data-en="2) Run the loader as Administrator." data-zh="2）以管理员身份运行加载器。"></div>
-                    <div class="step" data-ru="3) Выберите продукт и нажмите Запуск." data-en="3) Select your product and click Launch." data-zh="3）选择产品并点击启动。"></div>
-                    <div class="step" data-ru="4) После успешной инициализации сразу запускайте игру." data-en="4) After successful initialization, launch the game immediately." data-zh="4）初始化成功后，立即启动游戏。"></div>
-                    <div class="step" data-ru="5) Откройте меню продукта горячей клавишей (обычно Home/Del)." data-en="5) Open product menu with the hotkey (usually Home/Del)." data-zh="5）使用热键打开菜单（通常为 Home/Del）。"></div>
+                    <div class="step" data-ru="Скачайте актуальный лоадер через ключ/кабинет." data-en="Download the latest loader from your key/account panel." data-zh="通过密钥/账户面板下载最新加载器。">Скачайте актуальный лоадер через ключ/кабинет.</div>
+                    <div class="step" data-ru="Запустите лоадер от имени администратора." data-en="Run loader as Administrator." data-zh="以管理员身份运行加载器。">Запустите лоадер от имени администратора.</div>
+                    <div class="step" data-ru="Выберите продукт и нажмите «Запуск»." data-en="Select the product and click 'Launch'." data-zh="选择产品并点击“启动”。">Выберите продукт и нажмите «Запуск».</div>
+                    <div class="step" data-ru="После успешной инициализации сразу запускайте игру." data-en="Launch the game immediately after successful initialization." data-zh="初始化成功后立即启动游戏。">После успешной инициализации сразу запускайте игру.</div>
+                    <div class="step" data-ru="Откройте меню горячей клавишей (обычно Home/Del)." data-en="Open menu with hotkey (usually Home/Del)." data-zh="使用热键打开菜单（通常 Home/Del）。">Откройте меню горячей клавишей (обычно Home/Del).</div>
                 </div>
             </section>
 
             <section id="page-lite" class="section">
-                <h1 data-ru="Инструкция для <span class='a'>ABI LITE / LEGIT</span>" data-en="<span class='a'>ABI LITE / LEGIT</span> Guide" data-zh="<span class='a'>ABI LITE / LEGIT</span> 指南"></h1>
-                <p class="subtitle" data-ru="Отдельные рекомендации для облегченной/легит версии." data-en="Special recommendations for Lite/Legit configuration." data-zh="适用于 Lite/Legit 版本的专项建议。"></p>
+                <h1 data-ru="Инструкция для <span class='a'>ABI LITE / LEGIT</span>" data-en="<span class='a'>ABI LITE / LEGIT</span> Guide" data-zh="<span class='a'>ABI LITE / LEGIT</span> 指南">Инструкция для <span class='a'>ABI LITE / LEGIT</span></h1>
+                <p class="subtitle" data-ru="Отдельные рекомендации для максимально легитной игры." data-en="Special recommendations for a clean legit playstyle." data-zh="面向 Lite/Legit 风格的专项建议。">Отдельные рекомендации для максимально легитной игры.</p>
                 <div class="steps">
-                    <div class="step" data-ru="Используйте умеренные настройки, избегайте экстремальных значений." data-en="Use moderate settings and avoid extreme values." data-zh="使用中等参数，避免极端设置。"></div>
-                    <div class="step" data-ru="После обновления игры всегда скачивайте свежий билд." data-en="After each game update, always download a fresh build." data-zh="每次游戏更新后务必下载最新版本。"></div>
-                    <div class="step" data-ru="Если конфиг поврежден — удалите конфиг и создайте заново." data-en="If config is corrupted, delete it and create a new one." data-zh="若配置损坏，请删除并重新创建。"></div>
+                    <div class="step" data-ru="Используйте умеренные значения и избегайте экстремальных пресетов." data-en="Use moderate values and avoid extreme presets." data-zh="使用中等参数，避免极端预设。">Используйте умеренные значения и избегайте экстремальных пресетов.</div>
+                    <div class="step" data-ru="После обновления игры скачивайте только свежий билд." data-en="After game updates, use only a fresh build." data-zh="游戏更新后仅使用最新构建。">После обновления игры скачивайте только свежий билд.</div>
+                    <div class="step" data-ru="Если конфиг ломается — удалите и создайте заново." data-en="If config gets corrupted, recreate it from scratch." data-zh="若配置损坏，请删除并重新创建。">Если конфиг ломается — удалите и создайте заново.</div>
                 </div>
             </section>
 
             <section id="page-errors" class="section">
-                <h1 data-ru="Частые <span class='a'>ошибки</span>" data-en="Common <span class='a'>Errors</span>" data-zh="常见<span class='a'>错误</span>"></h1>
-                <p class="subtitle" data-ru="Нажмите на ошибку, чтобы открыть решение." data-en="Click an error to open the solution." data-zh="点击错误项可查看解决方法。"></p>
+                <h1 data-ru="Частые <span class='a'>ошибки</span>" data-en="Common <span class='a'>Errors</span>" data-zh="常见<span class='a'>错误</span>">Частые <span class='a'>ошибки</span></h1>
+                <p class="subtitle" data-ru="Нажмите на ошибку, чтобы открыть решение." data-en="Click error item to open solution." data-zh="点击错误项可展开解决方案。">Нажмите на ошибку, чтобы открыть решение.</p>
 
                 <div class="error" data-error="5">
                     <div class="error-head" onclick="toggleError(this)"><span class="num">#5</span><span class="error-title">WebView2 Runtime not found</span><span class="arrow">▶</span></div>
                     <div class="error-body">
                         <ul>
-                            <li data-ru="Установите Microsoft Edge WebView2 Runtime." data-en="Install Microsoft Edge WebView2 Runtime." data-zh="安装 Microsoft Edge WebView2 Runtime。"></li>
-                            <li data-ru="Перезагрузите ПК и повторите запуск." data-en="Restart your PC and retry launch." data-zh="重启电脑后再次尝试启动。"></li>
+                            <li data-ru="Установите Microsoft Edge WebView2 Runtime." data-en="Install Microsoft Edge WebView2 Runtime." data-zh="安装 Microsoft Edge WebView2 Runtime。">Установите Microsoft Edge WebView2 Runtime.</li>
+                            <li data-ru="Перезагрузите ПК и повторите запуск." data-en="Restart PC and retry launch." data-zh="重启后再次启动。">Перезагрузите ПК и повторите запуск.</li>
                         </ul>
                     </div>
                 </div>
@@ -211,8 +496,8 @@
                     <div class="error-head" onclick="toggleError(this)"><span class="num">#8</span><span class="error-title">Injection error</span><span class="arrow">▶</span></div>
                     <div class="error-body">
                         <ul>
-                            <li data-ru="Удалите античиты/антивирус, очистите Temp, перезагрузите ПК." data-en="Remove anti-cheat/antivirus, clear Temp, restart PC." data-zh="卸载反作弊/杀毒，清理 Temp，重启电脑。"></li>
-                            <li data-ru="Запускайте лоадер строго до запуска игры." data-en="Run the loader strictly before the game starts." data-zh="必须在游戏启动前运行加载器。"></li>
+                            <li data-ru="Удалите античиты/антивирус, очистите Temp, перезагрузите ПК." data-en="Remove anti-cheat/antivirus, clear Temp, reboot PC." data-zh="卸载反作弊/杀毒，清理 Temp，重启电脑。">Удалите античиты/антивирус, очистите Temp, перезагрузите ПК.</li>
+                            <li data-ru="Запускайте лоадер строго до запуска игры." data-en="Run loader strictly before the game starts." data-zh="必须在游戏启动前运行加载器。">Запускайте лоадер строго до запуска игры.</li>
                         </ul>
                     </div>
                 </div>
@@ -220,7 +505,7 @@
                     <div class="error-head" onclick="toggleError(this)"><span class="num">#12</span><span class="error-title">The system is under HVCI</span><span class="arrow">▶</span></div>
                     <div class="error-body">
                         <ul>
-                            <li data-ru="Отключите Изоляцию ядра / Memory Integrity." data-en="Disable Core Isolation / Memory Integrity." data-zh="关闭核心隔离 / 内存完整性。"></li>
+                            <li data-ru="Отключите Изоляцию ядра / Memory Integrity." data-en="Disable Core Isolation / Memory Integrity." data-zh="关闭核心隔离 / 内存完整性。">Отключите Изоляцию ядра / Memory Integrity.</li>
                         </ul>
                     </div>
                 </div>
@@ -228,7 +513,7 @@
                     <div class="error-head" onclick="toggleError(this)"><span class="num">#15</span><span class="error-title">Failed to read connection</span><span class="arrow">▶</span></div>
                     <div class="error-body">
                         <ul>
-                            <li data-ru="Перезагрузите роутер; при статическом IP используйте VPN на этапе лоадера." data-en="Restart router; for static IP use VPN during loader stage." data-zh="重启路由器；若为静态 IP，请在加载阶段使用 VPN。"></li>
+                            <li data-ru="Перезагрузите роутер; при статическом IP используйте VPN на этапе лоадера." data-en="Restart router; for static IP use VPN during loader stage." data-zh="重启路由器；静态 IP 请在加载阶段使用 VPN。">Перезагрузите роутер; при статическом IP используйте VPN на этапе лоадера.</li>
                         </ul>
                     </div>
                 </div>
@@ -236,15 +521,15 @@
                     <div class="error-head" onclick="toggleError(this)"><span class="num">#26</span><span class="error-title" data-ru="Лоадер не запускается" data-en="Loader does not start" data-zh="加载器无法启动">Лоадер не запускается</span><span class="arrow">▶</span></div>
                     <div class="error-body">
                         <ul>
-                            <li data-ru="Смените DNS на 1.1.1.1 / 1.0.0.1, затем перезапустите роутер." data-en="Set DNS to 1.1.1.1 / 1.0.0.1, then reboot router." data-zh="DNS 改为 1.1.1.1 / 1.0.0.1，然后重启路由器。"></li>
+                            <li data-ru="Смените DNS на 1.1.1.1 / 1.0.0.1, затем перезапустите роутер." data-en="Set DNS to 1.1.1.1 / 1.0.0.1, then reboot router." data-zh="将 DNS 改为 1.1.1.1 / 1.0.0.1 并重启路由器。">Смените DNS на 1.1.1.1 / 1.0.0.1, затем перезапустите роутер.</li>
                         </ul>
                     </div>
                 </div>
             </section>
 
             <section id="page-support" class="section">
-                <h1 data-ru="Поддержка <span class='a'>24/7</span>" data-en="Support <span class='a'>24/7</span>" data-zh="<span class='a'>24/7</span> 支持"></h1>
-                <div class="alert" data-ru="Перед обращением сделайте скриншот ошибки и укажите версию Windows." data-en="Before contacting support, make a screenshot of the error and share your Windows version." data-zh="联系支持前，请提供错误截图和 Windows 版本。"></div>
+                <h1 data-ru="Поддержка <span class='a'>24/7</span>" data-en="Support <span class='a'>24/7</span>" data-zh="<span class='a'>24/7</span> 支持">Поддержка <span class='a'>24/7</span></h1>
+                <div class="alert" data-ru="Перед обращением подготовьте скрин ошибки и версию Windows." data-en="Before contacting support, prepare screenshot + Windows version." data-zh="联系支持前请准备错误截图和 Windows 版本。">Перед обращением подготовьте скрин ошибки и версию Windows.</div>
                 <div class="alert ok">Telegram: <strong>@GHOST_SUPPORT</strong></div>
             </section>
         </div>
@@ -274,11 +559,12 @@
         const label = active ? active.textContent.trim() : "Page";
         const crumb = document.getElementById("crumb-current");
         if (active) {
-            const span = active.querySelector("span");
-            crumb.setAttribute("data-ru", span.getAttribute("data-ru") || label);
-            crumb.setAttribute("data-en", span.getAttribute("data-en") || label);
-            crumb.setAttribute("data-zh", span.getAttribute("data-zh") || label);
-            crumb.textContent = span.getAttribute(`data-${currentLang}`) || label;
+            const spans = active.querySelectorAll("span");
+            const textNode = spans.length > 1 ? spans[1] : spans[0];
+            crumb.setAttribute("data-ru", textNode.getAttribute("data-ru") || label);
+            crumb.setAttribute("data-en", textNode.getAttribute("data-en") || label);
+            crumb.setAttribute("data-zh", textNode.getAttribute("data-zh") || label);
+            crumb.textContent = textNode.getAttribute(`data-${currentLang}`) || label;
         }
         if (window.innerWidth <= 820) document.getElementById("sidebar").classList.remove("open");
         window.scrollTo(0, 0);

@@ -669,6 +669,36 @@
                         </ul>
                     </div>
                 </div>
+                <div class="error" data-error="27">
+                    <div class="error-head" onclick="toggleError(this)"><span class="num">#27</span><span class="error-title">WdFilter.sys is not stopped</span><span class="arrow">▶</span></div>
+                    <div class="error-body">
+                        <ul>
+                            <li data-ru="Причина: не отключен Windows Defender (или мешает защита в реальном времени)." data-en="Cause: Windows Defender is still enabled (or real-time protection blocks loading)." data-zh="原因：Windows Defender 未关闭（或实时防护阻止加载）。">Причина: не отключен Windows Defender (или мешает защита в реальном времени).</li>
+                            <li data-ru="Решение: отключите Defender вручную или через <a href='https://github.com/sokol252/DControl/releases/latest' target='_blank' rel='noopener noreferrer'>DControl</a>, затем перезагрузите ПК." data-en="Fix: disable Defender manually or via <a href='https://github.com/sokol252/DControl/releases/latest' target='_blank' rel='noopener noreferrer'>DControl</a>, then reboot your PC." data-zh="解决：手动关闭 Defender 或使用 <a href='https://github.com/sokol252/DControl/releases/latest' target='_blank' rel='noopener noreferrer'>DControl</a>，然后重启电脑。">Решение: отключите Defender вручную или через <a href='https://github.com/sokol252/DControl/releases/latest' target='_blank' rel='noopener noreferrer'>DControl</a>, затем перезагрузите ПК.</li>
+                        </ul>
+                        <div class="shots-grid">
+                            <div class="shot-card">
+                                <img src="error-wdfilter.png" alt="WdFilter not stopped error screenshot">
+                                <div class="shot-meta" data-ru="Ошибка №1: WdFilter.sys is not stopped — сначала отключите Defender, потом сделайте перезагрузку." data-en="Error #1: WdFilter.sys is not stopped — disable Defender first, then reboot." data-zh="错误 1：WdFilter.sys is not stopped —— 先关闭 Defender，再重启。">Ошибка №1: WdFilter.sys is not stopped — сначала отключите Defender, потом сделайте перезагрузку.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="error" data-error="28">
+                    <div class="error-head" onclick="toggleError(this)"><span class="num">#28</span><span class="error-title">Reboot required</span><span class="arrow">▶</span></div>
+                    <div class="error-body">
+                        <ul>
+                            <li data-ru="Это штатное сообщение после применения изменений защиты." data-en="This is a normal message after applying protection changes." data-zh="这是应用防护设置变更后的正常提示。">Это штатное сообщение после применения изменений защиты.</li>
+                            <li data-ru="Нажмите OK и дождитесь полной перезагрузки ПК, после этого снова зайдите в лоадер." data-en="Click OK and wait for a full PC reboot, then open the loader again." data-zh="点击 OK 并等待电脑完全重启，随后重新打开加载器。">Нажмите OK и дождитесь полной перезагрузки ПК, после этого снова зайдите в лоадер.</li>
+                        </ul>
+                        <div class="shots-grid">
+                            <div class="shot-card">
+                                <img src="error-reboot-required.png" alt="Reboot required error screenshot">
+                                <div class="shot-meta" data-ru="Ошибка №2: Reboot required — просто подтвердите OK и дождитесь автоперезагрузки." data-en="Error #2: Reboot required — confirm with OK and wait for auto reboot." data-zh="错误 2：Reboot required —— 点击 OK 并等待自动重启。">Ошибка №2: Reboot required — просто подтвердите OK и дождитесь автоперезагрузки.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="error" data-error="12">
                     <div class="error-head" onclick="toggleError(this)"><span class="num">#12</span><span class="error-title">The system is under HVCI</span><span class="arrow">▶</span></div>
                     <div class="error-body">

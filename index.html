@@ -270,6 +270,27 @@
             font-size: 14px;
         }
         .hotkey-item b { color: var(--accent); }
+        .abi-accordion { margin: 10px 0 0; }
+        .abi-accordion summary {
+            list-style: none;
+            cursor: pointer;
+            border: 1px solid var(--line);
+            border-radius: var(--r-md);
+            background: rgba(10, 20, 38, 0.72);
+            padding: 14px 16px;
+            color: #e7f1ff;
+            font-weight: 800;
+            letter-spacing: .3px;
+        }
+        .abi-accordion summary::-webkit-details-marker { display: none; }
+        .abi-accordion summary::after {
+            content: "⌄";
+            float: right;
+            color: #8ea4c8;
+            transition: transform .2s;
+        }
+        .abi-accordion[open] summary::after { transform: rotate(180deg); }
+        .abi-accordion .hotkeys-list { margin: 10px 0 16px; }
 
         .alert {
             border: 1px solid var(--line);
@@ -497,7 +518,7 @@
                 <h1 data-ru="Запуск <span class='a'>продукта</span>" data-en="<span class='a'>Product</span> Launch" data-zh="<span class='a'>产品</span>启动">Запуск <span class='a'>продукта</span></h1>
                 <div class="alert warn" data-ru="Рекомендуется запускать лоадер и игру на чистой системе после перезагрузки." data-en="Recommended: run loader and game on a clean system after reboot." data-zh="建议重启后在干净环境下启动加载器与游戏。">Рекомендуется запускать лоадер и игру на чистой системе после перезагрузки.</div>
                 <div class="steps">
-                    <div class="step" data-ru="Скачайте актуальный лоадер через ключ/кабинет." data-en="Download the latest loader from your key/account panel." data-zh="通过密钥/账户面板下载最新加载器。">Скачайте актуальный лоадер через ключ/кабинет.</div>
+                    <div class="step" data-ru="Скачайте актуальный лоадер через сайт <a href='https://ghost-cheats.com/loader' target='_blank' rel='noopener noreferrer'>ghost-cheats.com/loader</a>." data-en="Download the latest loader from <a href='https://ghost-cheats.com/loader' target='_blank' rel='noopener noreferrer'>ghost-cheats.com/loader</a>." data-zh="请通过网站 <a href='https://ghost-cheats.com/loader' target='_blank' rel='noopener noreferrer'>ghost-cheats.com/loader</a> 下载最新加载器。">Скачайте актуальный лоадер через сайт <a href='https://ghost-cheats.com/loader' target='_blank' rel='noopener noreferrer'>ghost-cheats.com/loader</a>.</div>
                     <div class="step" data-ru="Запустите лоадер от имени администратора." data-en="Run loader as Administrator." data-zh="以管理员身份运行加载器。">Запустите лоадер от имени администратора.</div>
                     <div class="step" data-ru="Выберите продукт и нажмите «Запуск»." data-en="Select the product and click 'Launch'." data-zh="选择产品并点击“启动”。">Выберите продукт и нажмите «Запуск».</div>
                     <div class="step" data-ru="После успешной инициализации сразу запускайте игру." data-en="Launch the game immediately after successful initialization." data-zh="初始化成功后立即启动游戏。">После успешной инициализации сразу запускайте игру.</div>
@@ -527,110 +548,122 @@
                 </ul>
 
                 <h2 data-ru="ABI LITE VER (ESP)" data-en="ABI LITE VER (ESP)" data-zh="ABI LITE 版本（ESP）">ABI LITE VER (ESP)</h2>
-                <div class="alert" data-ru="VISUALS" data-en="VISUALS" data-zh="VISUALS">VISUALS</div>
-                <ul class="hotkeys-list">
-                    <li class="hotkey-item">Esp on players</li>
-                    <li class="hotkey-item">Esp on bots</li>
-                    <li class="hotkey-item">Esp on corpses</li>
-                    <li class="hotkey-item">Distance to player</li>
-                    <li class="hotkey-item">Player price</li>
-                    <li class="hotkey-item">Party</li>
-                    <li class="hotkey-item">Player level</li>
-                    <li class="hotkey-item">Player health</li>
-                </ul>
+                <details class="abi-accordion">
+                    <summary>VISUALS</summary>
+                    <ul class="hotkeys-list">
+                        <li class="hotkey-item">Esp on players</li>
+                        <li class="hotkey-item">Esp on bots</li>
+                        <li class="hotkey-item">Esp on corpses</li>
+                        <li class="hotkey-item">Distance to player</li>
+                        <li class="hotkey-item">Player price</li>
+                        <li class="hotkey-item">Party</li>
+                        <li class="hotkey-item">Player level</li>
+                        <li class="hotkey-item">Player health</li>
+                    </ul>
+                </details>
 
                 <h2 data-ru="ABI full" data-en="ABI full" data-zh="ABI full">ABI full</h2>
-                <div class="alert" data-ru="AIMBOT" data-en="AIMBOT" data-zh="AIMBOT">AIMBOT</div>
-                <ul class="hotkeys-list">
-                    <li class="hotkey-item"><b>MEMORY</b></li>
-                    <li class="hotkey-item">Memory Legit Mode</li>
-                    <li class="hotkey-item">Enable</li>
-                    <li class="hotkey-item">Fov</li>
-                    <li class="hotkey-item">Line target</li>
-                    <li class="hotkey-item">Through wall</li>
-                    <li class="hotkey-item">Smooth</li>
-                    <li class="hotkey-item">Max distance</li>
-                    <li class="hotkey-item"><b>SILENT</b></li>
-                    <li class="hotkey-item">Silent Legit Mode</li>
-                    <li class="hotkey-item">Hit chance</li>
-                    <li class="hotkey-item">Fov</li>
-                    <li class="hotkey-item">Line target</li>
-                    <li class="hotkey-item">Through wall</li>
-                    <li class="hotkey-item">Max distance</li>
-                </ul>
+                <details class="abi-accordion">
+                    <summary>AIMBOT</summary>
+                    <ul class="hotkeys-list">
+                        <li class="hotkey-item"><b>MEMORY</b></li>
+                        <li class="hotkey-item">Memory Legit Mode</li>
+                        <li class="hotkey-item">Enable</li>
+                        <li class="hotkey-item">Fov</li>
+                        <li class="hotkey-item">Line target</li>
+                        <li class="hotkey-item">Through wall</li>
+                        <li class="hotkey-item">Smooth</li>
+                        <li class="hotkey-item">Max distance</li>
+                        <li class="hotkey-item"><b>SILENT</b></li>
+                        <li class="hotkey-item">Silent Legit Mode</li>
+                        <li class="hotkey-item">Hit chance</li>
+                        <li class="hotkey-item">Fov</li>
+                        <li class="hotkey-item">Line target</li>
+                        <li class="hotkey-item">Through wall</li>
+                        <li class="hotkey-item">Max distance</li>
+                    </ul>
+                </details>
 
-                <div class="alert" data-ru="VISUALS" data-en="VISUALS" data-zh="VISUALS">VISUALS</div>
-                <ul class="hotkeys-list">
-                    <li class="hotkey-item">Enable</li>
-                    <li class="hotkey-item">Show Name</li>
-                    <li class="hotkey-item">Show Box</li>
-                    <li class="hotkey-item">Show Skeleton</li>
-                    <li class="hotkey-item">Show weapon</li>
-                    <li class="hotkey-item">Show price</li>
-                    <li class="hotkey-item">Show distance</li>
-                    <li class="hotkey-item">Show armor</li>
-                    <li class="hotkey-item">Show ammo</li>
-                    <li class="hotkey-item">Show Health</li>
-                    <li class="hotkey-item">Displaying player inventory</li>
-                    <li class="hotkey-item">Displaying bot inventory</li>
-                    <li class="hotkey-item">Displaying corpse inventory</li>
-                    <li class="hotkey-item">Displaying the cartridge in the store</li>
-                    <li class="hotkey-item">Max distance</li>
-                </ul>
+                <details class="abi-accordion">
+                    <summary>VISUALS</summary>
+                    <ul class="hotkeys-list">
+                        <li class="hotkey-item">Enable</li>
+                        <li class="hotkey-item">Show Name</li>
+                        <li class="hotkey-item">Show Box</li>
+                        <li class="hotkey-item">Show Skeleton</li>
+                        <li class="hotkey-item">Show weapon</li>
+                        <li class="hotkey-item">Show price</li>
+                        <li class="hotkey-item">Show distance</li>
+                        <li class="hotkey-item">Show armor</li>
+                        <li class="hotkey-item">Show ammo</li>
+                        <li class="hotkey-item">Show Health</li>
+                        <li class="hotkey-item">Displaying player inventory</li>
+                        <li class="hotkey-item">Displaying bot inventory</li>
+                        <li class="hotkey-item">Displaying corpse inventory</li>
+                        <li class="hotkey-item">Displaying the cartridge in the store</li>
+                        <li class="hotkey-item">Max distance</li>
+                    </ul>
+                </details>
 
-                <div class="alert" data-ru="LOOT" data-en="LOOT" data-zh="LOOT">LOOT</div>
-                <ul class="hotkeys-list">
-                    <li class="hotkey-item">Enable</li>
-                    <li class="hotkey-item">Show Name</li>
-                    <li class="hotkey-item">Show Price</li>
-                    <li class="hotkey-item">Show Distance</li>
-                    <li class="hotkey-item">Weapon</li>
-                    <li class="hotkey-item">Adapter</li>
-                    <li class="hotkey-item">Ammo</li>
-                    <li class="hotkey-item">Armor</li>
-                    <li class="hotkey-item">Recovery</li>
-                    <li class="hotkey-item">Mybag</li>
-                    <li class="hotkey-item">Vestbag</li>
-                    <li class="hotkey-item">Loot Container</li>
-                    <li class="hotkey-item">Avatar</li>
-                    <li class="hotkey-item">Safe</li>
-                    <li class="hotkey-item">Pocket</li>
-                    <li class="hotkey-item">Badge</li>
-                    <li class="hotkey-item">Items</li>
-                    <li class="hotkey-item">Other</li>
-                    <li class="hotkey-item">Max Distance</li>
-                </ul>
+                <details class="abi-accordion">
+                    <summary>LOOT</summary>
+                    <ul class="hotkeys-list">
+                        <li class="hotkey-item">Enable</li>
+                        <li class="hotkey-item">Show Name</li>
+                        <li class="hotkey-item">Show Price</li>
+                        <li class="hotkey-item">Show Distance</li>
+                        <li class="hotkey-item">Weapon</li>
+                        <li class="hotkey-item">Adapter</li>
+                        <li class="hotkey-item">Ammo</li>
+                        <li class="hotkey-item">Armor</li>
+                        <li class="hotkey-item">Recovery</li>
+                        <li class="hotkey-item">Mybag</li>
+                        <li class="hotkey-item">Vestbag</li>
+                        <li class="hotkey-item">Loot Container</li>
+                        <li class="hotkey-item">Avatar</li>
+                        <li class="hotkey-item">Safe</li>
+                        <li class="hotkey-item">Pocket</li>
+                        <li class="hotkey-item">Badge</li>
+                        <li class="hotkey-item">Items</li>
+                        <li class="hotkey-item">Other</li>
+                        <li class="hotkey-item">Max Distance</li>
+                    </ul>
+                </details>
 
-                <div class="alert" data-ru="MISC" data-en="MISC" data-zh="MISC">MISC</div>
-                <ul class="hotkeys-list">
-                    <li class="hotkey-item">Instant Kill</li>
-                    <li class="hotkey-item">Instant Kill (Legit)</li>
-                    <li class="hotkey-item">Recoil control</li>
-                    <li class="hotkey-item">Adjusting recoil control</li>
-                    <li class="hotkey-item">Fast Search</li>
-                    <li class="hotkey-item">Team ID</li>
-                    <li class="hotkey-item">Bunnyhop</li>
-                    <li class="hotkey-item">Without a visor</li>
-                    <li class="hotkey-item">Displaying items in players' and bots' inventories</li>
-                    <li class="hotkey-item">Fast Reload</li>
-                    <li class="hotkey-item">Fast Magazine</li>
-                    <li class="hotkey-item">Auto Mode</li>
-                    <li class="hotkey-item">Fire Mode Indicator (Burst / Auto / Semi)</li>
-                    <li class="hotkey-item">Fov Changer</li>
-                    <li class="hotkey-item">Anti-flash</li>
-                    <li class="hotkey-item">Fast search by bind</li>
-                </ul>
+                <details class="abi-accordion">
+                    <summary>MISC</summary>
+                    <ul class="hotkeys-list">
+                        <li class="hotkey-item">Instant Kill</li>
+                        <li class="hotkey-item">Instant Kill (Legit)</li>
+                        <li class="hotkey-item">Recoil control</li>
+                        <li class="hotkey-item">Adjusting recoil control</li>
+                        <li class="hotkey-item">Fast Search</li>
+                        <li class="hotkey-item">Team ID</li>
+                        <li class="hotkey-item">Bunnyhop</li>
+                        <li class="hotkey-item">Without a visor</li>
+                        <li class="hotkey-item">Displaying items in players' and bots' inventories</li>
+                        <li class="hotkey-item">Fast Reload</li>
+                        <li class="hotkey-item">Fast Magazine</li>
+                        <li class="hotkey-item">Auto Mode</li>
+                        <li class="hotkey-item">Fire Mode Indicator (Burst / Auto / Semi)</li>
+                        <li class="hotkey-item">Fov Changer</li>
+                        <li class="hotkey-item">Anti-flash</li>
+                        <li class="hotkey-item">Fast search by bind</li>
+                    </ul>
+                </details>
 
-                <div class="alert" data-ru="OTHER" data-en="OTHER" data-zh="OTHER">OTHER</div>
-                <ul class="hotkeys-list">
-                    <li class="hotkey-item">Adjust the font size of corpses</li>
-                    <li class="hotkey-item">Adjust the font size of players</li>
-                    <li class="hotkey-item">Adjust the font size of bots</li>
-                    <li class="hotkey-item">Adjust the font size of items</li>
-                    <li class="hotkey-item">Adjust the font size of grenades</li>
-                    <li class="hotkey-item">Load config</li>
-                    <li class="hotkey-item">Save config</li>
-                </ul>
+                <details class="abi-accordion">
+                    <summary>OTHER</summary>
+                    <ul class="hotkeys-list">
+                        <li class="hotkey-item">Adjust the font size of corpses</li>
+                        <li class="hotkey-item">Adjust the font size of players</li>
+                        <li class="hotkey-item">Adjust the font size of bots</li>
+                        <li class="hotkey-item">Adjust the font size of items</li>
+                        <li class="hotkey-item">Adjust the font size of grenades</li>
+                        <li class="hotkey-item">Load config</li>
+                        <li class="hotkey-item">Save config</li>
+                    </ul>
+                </details>
 
                 <h2 data-ru="Инструкция с фото" data-en="Photo instruction" data-zh="图文步骤">Инструкция с фото</h2>
                 <div class="shots-grid">
